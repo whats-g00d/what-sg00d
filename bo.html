@@ -54,7 +54,7 @@
       const total = document.getElementById("total").value;
 
       if (partNumber && orderNumber && ranking && total) {
-        const message = `Your ${orderNumber} for ${partNumber} is currently ranked ${ranking} out of ${total}`;
+        const message = `Your order ${orderNumber} for part ${partNumber} is currently ranked ${ranking} out of ${total} on the backorder list.`;
         document.getElementById("result").textContent = message;
       } else {
         document.getElementById("result").textContent = "Please fill out all fields.";
