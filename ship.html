@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shipping Status Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+    }
+    input {
+      display: block;
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 100%;
+    }
+    button {
+      padding: 10px 15px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Shipping Status Generator</h2>
+
+  <label>Departure Date:
+    <input type="date" id="departureDate">
+  </label>
+
+  <label>Ship Origin:
+    <input type="text" id="shipOrigin" placeholder="e.g., Los Angeles">
+  </label>
+
+  <label>Ship Method (optional):
+    <input type="text" id="shipMethod" placeholder="e.g., air, ground, sea">
+  </label>
+
+  <label>ETA Date:
+    <input type="date" id="etaDate">
+  </label>
+
+  <button onclick="generateShippingStatus()">Generate Message</button>
+
+  <div id="result"></div>
+
+  <script>
+    function generateShippingStatus() {
+      const departureDate = document.getElementById("departureDate").value;
+      const shipOrigin = document.getElementById("shipOrigin").value;
+      const shipMethod = document.getElementById("shipMethod").value.trim();
+      const etaDate = document.getElementById("etaDate").value;
+
+      if (!departureDate || !shipOrigin || !etaDate) {
+        document.getElementById("result").textContent = "Please fill out all required fields.";
+        return;
+      }
+
+      let message = `Enough pieces to fulfill your order departed ${shipOrigin}`;
+      if (shipMethod) {
+        message += ` by ${shipMethod}`;
+      }
+      message += ` on ${departureDate}, giving you an ETA of ${etaDate}.`;
+
+      document.getElementById("result").textContent = message;
+    }
+  </script>
+
+</body>
+</html>
